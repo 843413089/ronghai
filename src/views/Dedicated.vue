@@ -1,7 +1,12 @@
 <template>
   <div class="Dedicated">
     <div class="header">
-      <DestoryHeader :msg="text"></DestoryHeader>
+      <van-cell>
+        <template #title>
+          <van-image class="DeleteIcon" :src="DeleteIcon" />
+          <span class="custom-title">专线渠道</span>
+        </template>
+      </van-cell>
       <van-cell v-show="cancel">
         <van-search v-model="value" placeholder="出发地/目的地" input-align="center" @focus="onfocus" />
       </van-cell>
@@ -16,10 +21,6 @@
       </van-cell>
     </div>
     <div class="main">
-
-
-
-
       <div class="card" v-for="item in 3" :key="item.id">
         <van-row class="place">
           <van-col span="8">
@@ -40,9 +41,9 @@
             <span>班车时间：</span>
           </van-col>
           <van-col span="18">
-            <van-tag size="medium" round text-color="red" type="warning">18:00</van-tag>
-            <van-tag size="medium" round text-color="red" type="warning">18:00</van-tag>
-            <van-tag size="medium" round text-color="red" type="warning">18:00</van-tag>
+            <van-tag round plain type="warning">标签</van-tag>
+            <van-tag round plain type="warning">标签</van-tag>
+            <van-tag round plain type="warning">标签</van-tag>
           </van-col>
         </van-row>
 
@@ -91,11 +92,9 @@
   </div>
 </template>
 <script>
-import DestoryHeader from "@/components/DestoryHeader.vue";
 export default {
   data() {
     return {
-      text: "专线渠道",
       DeleteIcon: require("../assets/icon/cancel.png"),
       acrossIcon: require("../assets/icon/across.png"),
       CompileIcon: require("../assets/icon/compile.png"),
@@ -104,14 +103,7 @@ export default {
       cancel: true,
     };
   },
-  components: {
-    DestoryHeader,
-  },
   methods: {
-    // 父传子组件项目头
-    dataChange(data) {
-      this.msg = data;
-    },
     onfocus() {
       console.log("点击");
       //   this.cancel=="false";
@@ -121,12 +113,23 @@ export default {
   },
 };
 </script>
-<style lang="less" scoped>
+<style scope>
+.custom-title {
+  font-size: 18px;
+  font-family: SourceHanSansCN-Regular;
+  margin-left: 9px;
+  font-weight: 600;
+}
 .van-search .van-cell {
   background: rgba(238, 238, 238, 1);
   border-radius: 14px;
 }
 
+.DeleteIcon {
+  width: 13px;
+  height: 13px;
+  margin-left: 13px;
+}
 .search {
   width: 78px;
   height: 31px;
@@ -153,11 +156,11 @@ export default {
 }
 .place {
   height: 44px;
+}
+.place .van-col {
   position: relative;
 }
-
 .place .van-col span {
-  margin-left: 26px;
   width: 66px;
   height: 16px;
   font-size: 16px;
@@ -166,8 +169,8 @@ export default {
   color: rgba(0, 0, 0, 1);
   line-height: 20px;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-top: 14px;
+  margin-left: 26px;
 }
 .place .van-col .van-image {
   margin-top: 20px;
@@ -207,10 +210,5 @@ export default {
 .CompileIcon {
   height: 8px;
   width: 8px;
-}
-
-.van-tag {
-  position: relative;
-  letter-spacing: 3px;
 }
 </style>
