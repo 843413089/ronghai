@@ -45,11 +45,16 @@ export default new Router({
       name: 'newbuild',
       component: () => import('./views/Newbuild.vue')
     },
-
     {
-      path: '/editchannel',//新建专线渠道
-      name: 'editchannel',
-      component: () => import('./views/Editchannel.vue')
+      path: '/SelectAddress',//新建专线渠道
+      name: 'SelectAddress',
+      component: () => import('./views/SelectAddress.vue')
     },
+    {
+      path: '/SelectionTime',//新建专线渠道
+      name: 'SelectionTime',
+      component: () => import('./views/SelectionTime.vue')
+    }
+
   ]
 })
